@@ -2,6 +2,7 @@ package controler;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import pojo.MyTest;
 import pojo.TestEntity;
 import pojo.User;
 
@@ -35,7 +36,7 @@ public class TestServlet extends HttpServlet {
 
         //单条数据
 
-        JSONObject jsonData = JSONObject.fromObject(new User("sdm","22","男","重庆"));
+        //JSONObject jsonData = JSONObject.fromObject(new User("sdm","22","男","重庆"));
 
 /*
         //单条数据中包含多条数据
@@ -50,6 +51,17 @@ public class TestServlet extends HttpServlet {
                                 "文本"),
                         list));*/
 
+
+        //没有节点的jsonArray
+
+        List<String> listStr = new ArrayList<>();
+        listStr.add("asdfadfafa");
+        listStr.add("gsdfgag");
+        listStr.add("QWERETERG");
+        listStr.add("dfhgfh");
+        listStr.add("DAFafSFDAFda");
+        JSONObject jsonData = JSONObject.fromObject(new MyTest(listStr));
+
         out.write(jsonData.toString());
         out.flush();
         out.close();
@@ -59,4 +71,5 @@ public class TestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
     }
+
 }
